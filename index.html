@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Licznik taktów</title>
+<style>
+    iframe {
+        margin-top: 20px;
+    }
+
+    body {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background-color: lightblue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    input, select {
+        width: 300px;
+        height: 30px;
+        font-size: 16px;
+        padding: 0 10px;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+    }
+
+	select {
+        width: 325px;
+        height: 30px;
+        font-size: 16px;
+        padding: 0 10px;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+
+    button {
+        width: 100px;
+        height: 35px;
+        background-color: lightgreen;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    button:hover {
+        background-color: green;
+    }
+
+    footer {
+        background-color: lightgray;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        position:fixed;
+        bottom:0;
+        width: 100%;
+    }
+
+    p {
+        margin: 10px;
+    }
+
+    table, th, td {
+        border: 1px solid;
+        border-collapse:collapse;
+        padding: 5px;
+        
+    }
+
+    table {
+        margin-top: 20px;
+    }
+
+    #bpm {
+        margin-top: 50%;
+    }
+</style>
+</head>
+    <body>
+        <script>
+
+            function refresh() {
+                location.reload();
+            }
+
+            function main() {
+
+                function sleep(ms) {
+                    return new Promise(resolve => setTimeout(resolve, ms));
+                    }
+                var takt = 0;
+                var cwierc = 0;
+                var a = document.getElementById('do_zmiany1');
+                var metrum = document.getElementById('metrum').value;
+                a.innerHTML = takt = 1;
+                var b = document.getElementById('do_zmiany2');
+                b.innerHTML = takt = 1;
+                var bpm = document.getElementById('bpm').value;
+                async function sleep_append() {
+                    while (a == a) {
+                        if (cwierc == metrum) {
+                            cwierc = 0;
+                            a.innerHTML = takt += 1;
+                        }
+                        
+                        b.innerHTML = cwierc += 1;
+                        await sleep(60/(bpm)*990);
+                }
+                }
+                sleep_append();
+            }
+        </script>
+        <header>
+            <h1>Liczenie taktów</h1>
+        </header>
+        <main>
+        	<label>Tempo : <input type="number" name="bpm" id="bpm" value="90"></label>
+            <label>Metrum: <input type="number" name="metrum" id="metrum" value="4"></label>
+        	<button onclick="main();this.disabled=true;">Licz</button>
+            <button onclick="refresh()">Zresetuj</button>
+
+            <table>
+        	    <tr>
+                    <td>
+                    Takt: 
+                </td>
+                <td>
+                    <p id="do_zmiany1">0</p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                    Ćwierć nuta: 
+                </td>
+                <td>
+                    <p id="do_zmiany2">0</p>
+                    </td>
+                </tr>
+
+            </table>
+
+        </main>
+        <footer>
+        <p>Strona zrobiona przez: Paweł Dłubała.</p>
+        <p>Odświerz stronę aby zacząć odliczenie od początku.</p>
+        </footer>
+    </body>
+</html>
+
+
